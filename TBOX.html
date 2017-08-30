@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹窗</title>
+	<style>
+.graybg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+
+.doubleMsg {
+    width: 771px;
+    height: 478px;
+    background: url(./images/bg.png) center no-repeat;
+    /*background-size: 50%;*/
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 2001;
+    margin-left: -385px;
+    margin-top: -240px;
+}
+
+.doubleTitle {
+    width: 466px;
+    height: 229px;
+    background: url(./images/pic2.png) center no-repeat;
+    /*background-size: 50%;*/
+    position: absolute;
+    left: 168px;
+    top: 120px;
+    z-index: 2010;
+}
+
+.doublePic {
+    width: 657px;
+    height: 325px;
+    position: absolute;
+    background: url(./images/pic1.png) center no-repeat;
+    /*background-size: 50%;*/
+    top: 120px;
+    left: 61px;
+    z-index: 2013;
+}
+
+.doublelink {
+    width: 150px;
+    height: 42px;
+    position: absolute;
+    left: 50%;
+    bottom: 80px;
+    z-index: 3000;
+    margin-left:-75px;
+}
+
+.doublelink a {
+    display: inline-block;
+    width: 150px;
+    height: 42px;
+    background: #9d0206;
+    border: solid 2px #ffda50;
+    line-height: 42px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffda50;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    -ms-border-radius: 8px;
+}
+
+.doubleClose {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 34%;
+    top: 20%;
+    z-index: 20011;
+    background: url(./images/close.png) center no-repeat;
+    /*background-size: 50%;*/
+}
+	</style>
+	<script data-main="js/main" src="js/zepto.m.js"></script>
+    <script src="js/zepto.cookie.min.js"></script>
+</head>
+<body>
+	<!--活动弹窗-->
+<div class="graybg" style="display: none">&nbsp;</div>
+<div class="doubleMsg" style="display: none">
+    <div class="doubleTitle">&nbsp;</div>
+    <div class="doublePic">&nbsp;</div>
+    <div class="doublelink"><a href="bounty.html" target="_blank">领取奖励金</a></div>
+    <a href="javascript:;" class="doubleClose"></a>
+</div>
+
+	<script>
+
+	
+
+    $(function(){
+        $.fn.cookie('isClose','yes');
+        if($.fn.cookie("isClose") == 'yes'){
+            $(".graybg").show();
+            $(".doubleMsg").show();
+            $(".doubleClose").click(function(){
+                $.fn.cookie("isClose",'yes',{ expires:1});        //一天
+            });
+        }
+
+		$(".doubleClose").click(function () {
+		        $(".doubleMsg").hide();
+		        $(".graybg").hide();
+		})
+
+
+    });
+		
+	</script>
+</body>
+</html>
